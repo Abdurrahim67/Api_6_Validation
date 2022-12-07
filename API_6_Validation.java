@@ -25,19 +25,19 @@ public class RoomOlusturmaSteps {
     @Given("user sends a post request for rooms data")
     public void user_sends_a_post_request_for_rooms_data() {
 
-        spec.pathParams("bir", "api", "iki", "rooms");
+        spec.pathParams("first", "api", "second", "rooms");
 
-        //Room data olusturma
+ 
 
         room.setRoomNumber(563154);
         room.setRoomType("DELUXE");
-        room.setDescription("Yeni bir room");
+        room.setDescription("a new room");
         room.setPrice(500);
         room.setStatus(true);
         response = given().headers("Authorization", "Bearer " + generateToken()
                 , "Content-Type", ContentType.JSON,
                 "Accept", ContentType.JSON
-        ).spec(spec).contentType(ContentType.JSON).body(room).when().post("/{bir}/{iki}");
+        ).spec(spec).contentType(ContentType.JSON).body(room).when().post("/{first}/{second}");
     }
 
     @Given("user gets the room data and validates")
